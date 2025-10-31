@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audacity Mall</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>🛒 Audacity Mall</h1>
+    <input type="text" id="searchInput" placeholder="Search for products..." />
+    <a href="cart.html" class="cart-icon">
+      🛍️ <span id="cartCount">0</span>
+    </a>
+  </header>
+
+  <nav>
+    <button class="category active" data-category="all">All</button>
+    <button class="category" data-category="men">Men</button>
+    <button class="category" data-category="women">Women</button>
+    <button class="category" data-category="accessories">Accessories</button>
+  </nav>
+
+  <section id="filters">
+    <select id="sizeFilter">
+      <option value="all">All Sizes</option>
+      <option value="S">Small</option>
+      <option value="M">Medium</option>
+      <option value="L">Large</option>
+    </select>
+
+    <select id="colorFilter">
+      <option value="all">All Colors</option>
+      <option value="red">Red</option>
+      <option value="black">Black</option>
+      <option value="white">White</option>
+      <option value="blue">Blue</option>
+    </select>
+  </section>
+
+  <main id="productList"></main>
+
+  <footer>
+    <p>© 2025 Audacity Mall. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audacity Mall</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Welcome to Audacity Mall</h1>
+    <a href="checkout.html">Go to Checkout</a>
+  </body>
+</html>

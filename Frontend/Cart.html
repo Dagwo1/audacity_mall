@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - Audacity Mall</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>🛍️ Your Cart</h1>
+    <a href="index.html" class="back-home">← Continue Shopping</a>
+  </header>
+
+  <main id="cartContainer"></main>
+
+  <section id="checkoutSection">
+    <h2>Total: ₦<span id="cartTotal">0</span></h2>
+    <button id="checkoutBtn">Checkout</button>
+  </section>
+
+  <footer>
+    <p>© 2025 Audacity Mall. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const cartContainer = document.getElementById('cartContainer');
+    const cartTotal = document.getElementById('cartTotal');
+
+    function renderCart() {
+      cartContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty 😢</p>';
+        cartTotal.textContent = 0;
+        return;
+      }
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div>
+            <h3>${item.name}</h3>
+            <p>Size: ${item.size} | Color: ${item.color}</p>
+            <p>₦${item.price.toLocaleString()}</p>
+            <button onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+        cartContainer.appendChild(div);
+      });
+
+      cartTotal.textContent = total.toLocaleString();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+      alert('Payment successful! 🎉 Thank you for shopping with Audacity Mall.');
+      localStorage.removeItem('cart');
+      window.location.href = 'index.html';
+    });
+
+    renderCart();
+  </script>
+</body>
+</html>
